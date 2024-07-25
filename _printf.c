@@ -42,6 +42,7 @@ int handle_specifier(char specifier, va_list args)
 	char *str;
 	int count = 0;
 	char c;
+	int num;
 
 	if (specifier == 'c')
 	{
@@ -57,18 +58,27 @@ int handle_specifier(char specifier, va_list args)
 			count += _putchar(*str++);
 	}
 	else if (specifier == '%')
+	{
 		count += _putchar('%');
+	}
 	else if (specifier == 'd' || specifier == 'i')
 	{
-		print_number(va_arg(args, int));
-		count++;
+		num = va_arg(args, int);
+		print_number(num);
+		if (num < 0)
+			count++;
+		while (num != 0)
+		{
+			count++;
+			num /= 10;
+		}
 	}
 	else
 	{
 		count += _putchar('%');
 		count += _putchar(specifier);
 	}
-	return (count);
+	return count;
 }
 /**
  * handle_format - Handles the format string
@@ -96,7 +106,7 @@ int handle_format(const char *format, va_list args)
 		}
 		i++;
 	}
-	return (count);
+	return count;
 }
 /**
  * _printf - Produces output according to a format
@@ -117,5 +127,5 @@ int _printf(const char *format, ...)
 	count = handle_format(format, args);
 	va_end(args);
 
-	return (count);
+	return count;
 }
