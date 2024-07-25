@@ -1,21 +1,21 @@
-.TH _printf 3  "23.07.24" "1.0" 
-"library function manual
+.TH _printf 3  "23.07.24" "Version 1.0" "library function manual"
 .SH NAME
 _printf \- format and print data
 .SH SYNOPSIS
-.B #include <stdio.h>
+.B #include <unistd.h>
+.B #include <stdarg.h>
+.B #include "main.h"
 .sp
-.B int _printf(const char *format, ...);
+.BI int _printf(const char *format, ...);
 .SH DESCRIPTION
-the \fB_printf\fR function sends formatted output to stdout.
+.B _printf
+produces output according to a format as described below.
+The function writes output to standard output, the format is a character string that may contain
+format specifiers marked by the character '%', which specify how subsequent arguments
+(or arguments accessed through the variable-length argument facilities of .B stdarg.h )
+are converted for output.
 
-the \fIformat\fR argument is a null-terminated string composed
-of zero or more derictives. A directive consists of an
-ordinary character (except %), which is copied unchanged to
-the output stream, and a conversion specification is introducted 
-by the % character and ends with a conversion specifier.
-
-The conversion specifiers and their meanings are:
+The format specifiers supported are:
 .sp
 .TP
 .B %c
@@ -24,14 +24,37 @@ Print a single character.
 .B %s
 Print a string of characters.
 .TP
-.B %d
-Print a decimal integer.
+.B %d, %i
+Print a signed decimal integer.
+.TP
+.B %%
+Prints a literal '%' character.
 .TP
 .B %f
-Print a floating point number.
+Prints a floating number.
 
 .SH RETURN VALUE
-The \fB_printf\fR returns the number of characters printed
-(not including the trailing null character used to end output to strings).
+The
+.B _printf
+function returns the number of characters printed (excluding the null byte used to end output to strings).
+If an output error is encountered, a negative value is returned.
 .sp
-if an output error is encountered, a negative value is returned.
+.SH EXEMPLES
+.nf
+#include <stdio.h>
+
+int main(void)
+{
+	_printf("character: %c\n", 'A');
+	_printf("string: %%s\n", "Hello, world");
+	_printf("integer: %d\n", 12345);
+	_printf("Percent sign: %%\n");
+	_printf("Floating: %f\n", 3.93);
+	return (0);
+}
+.fi
+.SH SEE ALSO
+.BR printf (3),
+.BR putchar (3)
+.SH AUTHOR
+Written by Jean-paul & Guney
