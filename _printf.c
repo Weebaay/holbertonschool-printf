@@ -34,7 +34,7 @@ void print_unsigned_number(unsigned int n)
  * handle_specifier - Handles a format specifier
  * @specifier: The format specifier
  * @args: The va_list of arguments
- * 
+ *
  * Return: The number of characters printed
  */
 int handle_specifier(char specifier, va_list args)
@@ -74,7 +74,7 @@ int handle_specifier(char specifier, va_list args)
  * handle_format - Handles the format string
  * @format: The format string
  * @args: The va_list of arguments
- * 
+ *
  * Return: The number of characters printed
  */
 int handle_format(const char *format, va_list args)
@@ -101,7 +101,7 @@ int handle_format(const char *format, va_list args)
 /**
  * _printf - Produces output according to a format
  * @format: The format string containing the characters and the specifiers
- * 
+ *
  * Return: The number of characters printed (excluding the null byte used to
  * end output to strings)
  */
