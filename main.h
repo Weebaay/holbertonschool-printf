@@ -5,8 +5,10 @@
 #include <stddef.h>
 
 int _printf(const char *format, ...);
-int print_char(va_list args);
-int print_string(va_list args);
-int print_percent(va_list args);
+int _putchar(char c);
+void print_number(int n);
+void print_unsigned_number(unsigned int n);
+int handle_format(const char *format, va_list args);
+int handle_specifier(char specifier, va_list args);
 
 #endif
