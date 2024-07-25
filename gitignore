@@ -1,1 +1,9 @@
 main.c
+# Ignorer les fichier executable
+*.exe
+*.out
+*.o
+#Ignorer les fichier temporaires
+*.tmp 
+
+*.swp
