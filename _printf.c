@@ -65,12 +65,13 @@ int handle_specifier(char specifier, va_list args)
 	{
 		num = va_arg(args, int);
 		print_number(num);
-		while (num / 10)
-		{
-			num /= 10;
+		if (num <= 0)
 			count++;
+		while (num != 0)
+		{
+			count++;
+			num /= 10;
 		}
-		count++;
 	}
 	else
 	{
