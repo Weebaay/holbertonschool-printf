@@ -2,17 +2,19 @@
 .SH NAME
 _printf \- format and print data
 .SH SYNOPSIS
+.nf
 .B #include <unistd.h>
 .B #include <stdarg.h>
 .B #include "main.h"
 .sp
 .BI int _printf(const char *format, ...);
+.fi
 .SH DESCRIPTION
 .B _printf
 produces output according to a format as described below.
 The function writes output to standard output, the format is a character string that may contain
 format specifiers marked by the character '%', which specify how subsequent arguments
-(or arguments accessed through the variable-length argument facilities of .B stdarg.h )
+(or arguments accessed through the variable-length argument facilities of stdarg.h )
 are converted for output.
 
 The format specifiers supported are:
@@ -42,6 +44,7 @@ If an output error is encountered, a negative value is returned.
 .SH EXEMPLES
 .nf
 #include <stdio.h>
+#include "main.h"
 
 int main(void)
 {
